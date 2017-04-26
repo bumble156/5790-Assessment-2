@@ -605,39 +605,43 @@ HORIZONTAL
 @#$#@#$#@
 ## WHAT IS IT?
 
-(a general understanding of what the model is trying to show or explain)
+This is a model based on Ross Hammond's [2000] model of social corruption. Citizens and bureaucrats play each other in a game in which each can act in a corrupt or honest manner, with a payoff when both are corrupt but the threat of jail for a corrupt agent who plays an honest agent.
 
 ## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+The two sets of agents are citizens and bureaucrats. They are set up similarly, with each having three defining features. Each has an inherent predisposition to honesty (a randomly generated float between 0 and 1). Each has a memory of past interactions where the strategy (corrupt or honest) of the opposing agent is stored. Finally, each has a social network containing other agents of the same breed.
+Each round, every agent decides on its strategy based on its three features. It calculates the percieved threat of being jailed, its percieved chance of meeting a corrupt agent and its own moral payoff for completing a corrupt action.These are used to generate a percieved overall payoff for corruption and the agent decided to be corrupt if this is greater than its percieved payoff for honesty.
+Each citizen plays a bureaucrat and if both are honest they recieve a lower payoff. If they are both corrupt they both recieve the higher payoff. However, if one is honest and one is corrupt, the corrupt agent is reported to the authorities.
+Agents that exceed a threshold of reports are jailed for a period before being released.
 
 ## HOW TO USE IT
 
-(how to use the model, including a description of each of the items in the Interface tab)
+The setup button will set up the model using the chosen parameters. This will generate the turtles, give them a breed and calculate their initial decision.
+The go button will perform one turn, where each free citizen will play a random bureaucrat and the authorities will respond accordingly. The decisions for the next turn will then be calculated again based on the outcome of this.
+The go forever button will repeatedly take turns until it is clicked again.
+The number-of-agents slider will select how many agents to initialise the game with. IF this is more than can fit on the current grid (each turtle needs it's own patch) then the grid will be resized accordingly.
+The corruption-base-payoff and honesty-base-payoff sliders set the base payoffs (x and y) for each action.
+The size-of-memory slider sets how many previous encounters an agent will remember.
+The size-of-network slider sets how large each social network is. If this is set to more than there are other turtles of the same breed, it will be decreased to a logical amount.
+The jail-term slider sets how long an agent will spend in jail.
+The reports-for-jail slider sets how many reports is required before an agent is imprisoned.
+The Show Info For All Turtles button prints to the console a report of each turtle at the current moment.
+The Show Info For Selected Turtle prints out the report for the turtle with the who number specified in the show-info-on-turtle input window.
+The Total Corruption graph show the total amount of turtles that are corrupt at the current moment.
+The Endogenous Transition Behaiour in Corruption graph shows the levels of corrupt and jailed turtles of each breed and is designed to mimic Hammond's original graph (Figure 1 in the source material)
 
 ## THINGS TO NOTICE
 
-(suggested things for the user to notice while running the model)
+With many settings the population remains constant throughout the running of the model, either mostly corrupt or mostly honest. However, with some settings, it can be noticed that the population starts out corrupt, but 'tips' at a random point where a large number of agents get jailed at once, causing a rapid shift towards honesty. Once a population becomes honest, it does not revert back. For further information on this phenomena, see the source material [Hammond, 2000].
 
 ## THINGS TO TRY
 
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
-
-## EXTENDING THE MODEL
-
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
-
-## NETLOGO FEATURES
-
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
-
-## RELATED MODELS
-
-(models in the NetLogo Models Library and elsewhere which are of related interest)
+Play with the sliders to see how each affects the corruption of the society. Try and find the sweet spot where the society tips towards honesty.
 
 ## CREDITS AND REFERENCES
 
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+GitHub repository: https://github.com/bumble156/5790-Assessment-2
+Citation: Hammond, R. A. (2000). Endogenous Transition Dynamics in Corruption: An Agent-Based Computer Model. Washington DC: Brookings Institution.
 @#$#@#$#@
 default
 true
