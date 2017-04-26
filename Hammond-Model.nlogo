@@ -22,7 +22,7 @@ breed [bureaucrats bureaucrat] ;; Define the bureaucrats
 to setup
   clear-all
   set-default-shape turtles "person"
-  resize-world 0 9 0 (number-of-agents / 10) - 1
+  resize-world 0 9 0 (number-of-agents / 10) - 1 ;; Resize world so it is large enough to accommodate every turtle on its own patch
   setup-globals
   setup-turtles
   reset-ticks
